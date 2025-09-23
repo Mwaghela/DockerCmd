@@ -1,0 +1,61 @@
+#Creator: Manish Waghela
+#Date: 23 Sep 2025
+
+# DOCKER
+1. How to install docker 
+    Go to docker.com and download compatible version based on MacOS or WindowsOS or LinuxOS
+
+2. How to verify if Docker is install in your system or VM (run below command on terminal or cmd prompt)
+    docker
+
+3. How to verify Docker version
+    docker -v
+
+# DOCKER IMAGE
+4. Docker images public collection available on Docker Hub
+    hub.docker.com
+
+5. How to create/pull Docker image 'Hello World'
+    docker pull hello-world (First it will check in local environment, if not found then it will pull it from hub.docker.com 
+    and make it available in local system for later use)
+
+6. Identify all Docker images available on local system
+    docker images
+
+7. Delete an Docker image
+    docker rmi IMAGE_NAME/IMAGE_ID
+
+8. Remove unused Docker image
+    docker image prune
+
+9. Build an Docker image from Dockerfile
+    docker build -t IMAGE_NAME:VERSION  (version is optional, if not provided latest version will be considered)
+    docker build -t IMAGE_NAME:VERSION -no-cache (build without cache)
+
+10. Build Docker container from Docker image
+    docker run IMAGE_NAME
+
+11. Background actions taken when we run Docker image
+    i. The Docker Client contacted the Docker Deamon
+    ii. The Docker Deamon pulled the 'image_name' image from Docker Hub. (arm64v8)
+    iii. The Docker Deamon created a new container from that image which run the executable
+    iv. The Docker Deamon streamed that output to the Docker Client, which sent it to your terminal
+
+# DOCKER CONTAINER
+12. Build/Run Docker container with interactive mode from Docker image
+    docker run -it Ubantu
+
+13. Identify all Docker container
+    docker ps -a
+
+14. Start or Stop Docker Container
+    docker start CONTAINER_NAME/CONTAINER_ID
+    docker stop CONTAINER_NAME/CONTAINER_ID
+
+15. Identify running Docker containers
+    docker ps
+
+16. Delete Docker container
+    docker rm CONTAINER_NAME/CONTAINER_ID
+
+    
