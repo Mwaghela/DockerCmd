@@ -105,7 +105,7 @@
 
 -----------------------------------------------------------------------
 # DOCKER CONTAINER ISSUE DEBUGGING
------------------------------------------------------------------------    
+-----------------------------------------------------------------------
 26. Check logs of Docker Container
     docker logs CONTAINER_NAME/CONTAINER_ID
 
@@ -113,5 +113,42 @@
     docker exec -it CONTAINER_NAME /bin/bash
     docker exec -it CONTAINER_NAME sh
 
+-----------------------------------------------------------------------
+# DOCKER VOLUME
+-----------------------------------------------------------------------
+Volumes are persistent data stores for containers
 
-    
+28. List all Volumes
+    docker volume ls
+
+29. Create new Named Volume
+    docker volume create VOLUME_NAME
+
+    NOTE: Default path for
+    - WindowsOS => C:\ProgramData\docker\Volumes
+    - Mac/Linux => /var/lib/docker/volumes
+
+30. Delete a Named Volume
+    docker volume rm VOLUME_NAME
+
+31. Mount/Attach Volume with running Docker Container
+    - Named Volume> 
+        docker run --volume VOLUME_NAME:MOUNT_PATH IMAGE_NAME
+        docker run -mount type=volume,src=VOLUME_NAME,dest=MOUNT_PATH
+
+    - Anonymous Volume> 
+        docker run --volume MOUNT_PATH IMAGE_NAME (Temporary volume assigned by Docker)
+
+    - Bind Mount> 
+        docker run --mount type=bind,source=HOST_PATH,target=CONTAINER_PATH IMAGE_NAME
+
+    NOTE: 
+    - We can use --volume or -v interchangeably
+    - --mount flag is generally preferred as it is more explicit and supports all available options
+    - We can use MOUNT_PATH or CONTAINER_PATH interchangeably
+
+32. Get detailed information on Docker Volume
+    docker volume inspect VOLUME_NAME
+
+33. Remove all unused local volumes
+    docker volume prune
