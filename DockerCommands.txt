@@ -69,8 +69,49 @@
     docker rm CONTAINER_NAME/CONTAINER_ID
 
 17. How to run Docker Image in background or in detach mode / run Docker Container in background
-    docker run -d IMAGE_NAME
+    docker run -d IMAGE_NAME (NOTE: By default, all images run in attach mode)
 
-18. Run Docker Container with customer name
+18. Run Docker Container with custom name
     docker run --name CUSTOMER_CONTAINER_NAME IMAGE_NAME
+
+19. Create environment variable while running Docker Image
+    docker run -d -e VARIABLE_NAME=VARIABLE_VALUE
+
+-----------------------------------------------------------------------
+# DOCKER CONTAINER EXAMPLE
+-----------------------------------------------------------------------
+20. Run mysql in Docker Container
+    docker run -d -e MYSQL_ROOT_PASSWORD=secret mysql
+
+-----------------------------------------------------------------------
+# DOCKER CONTAINER DEPLOYMENT
+-----------------------------------------------------------------------
+21. Login/Logout into DockerHub
+    docker login -u USER_NAME
+    docker login
+    docker logout
+
+22. Search for Docker Image in DockerHub
+    docker search IMAGE_NAME
+
+23. Pull Docker Image from DockerHub
+    docker pull IMAGE_NAME
+
+24. Tag Docker Image to Target Repository
+    docker tag IMAGE_NAME YOUR_DOCKER_ID/REPOSITORY_NAME
+
+25. Publish Repository
+    docker push USER_NAME/REPOSITORY_NAME
+
+-----------------------------------------------------------------------
+# DOCKER CONTAINER ISSUE DEBUGGING
+-----------------------------------------------------------------------    
+26. Check logs of Docker Container
+    docker logs CONTAINER_NAME/CONTAINER_ID
+
+27. Open shell inside running Docker Container/Run additonal commands on running Docker Container
+    docker exec -it CONTAINER_NAME /bin/bash
+    docker exec -it CONTAINER_NAME sh
+
+
     
