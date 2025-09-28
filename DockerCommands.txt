@@ -152,3 +152,41 @@ Volumes are persistent data stores for containers
 
 33. Remove all unused local volumes
     docker volume prune
+
+-----------------------------------------------------------------------
+# DOCKER NETWORK
+-----------------------------------------------------------------------
+34. List all Docker Networks
+    docker network ls
+
+35. Create new Docker network
+    docker network create NETWORK_NAME
+
+36. Remove Docker Network
+    docker network rm NETWORK_NAME
+
+37. Remove all unused Docker Network
+    docker network prune
+
+-----------------------------------------------------------------------
+# DOCKER NETWORK EXAMPLE
+-----------------------------------------------------------------------
+38. Create new Docker Network and run mongodb and mongo-express in same Docker Network
+    docker network create mongo-network
+
+    docker run -d \
+    -p27017:27017 \
+    --name mongo \
+    --network mongo-network \
+    -e MONGO_INITDB_ROOT_USERNAME=admin \
+    -e MONGO_INITDB_ROOT_PASSWORD=querty \
+    mongo
+
+    docker run -d \
+    -p8081:8081 \
+    --name mongo-express \
+    --network mongo-network \
+    -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
+    -e ME_CONFIG_MONGODB_ADMINPASSWORD=querty \
+    -e ME_CONFIG_MONGOURL="mongodb://admin:querty@mongo:27017" \
+    mongo-express
