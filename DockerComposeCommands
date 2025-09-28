@@ -1,0 +1,32 @@
+-----------------------------------------------------------------------
+# DOCKER COMPOSE
+-----------------------------------------------------------------------
+- A tool for defining and running multi-container applications.
+- .yaml -> Yet Another Markup Language
+
+-----------------------------------------------------------------------
+# DOCKER COMPOSE EXAMPLE
+-----------------------------------------------------------------------
+FileName: compose.yaml
+version: "3.8" <-Obsolete->
+services:
+ mongo: <-Name of the Service->
+  image:mongo <-Docker Image to be pulled from DockerHub->
+  ports:
+  -27017:27017
+  environment:
+   MONGO_INITDB_ROOT_USERNAME:admin
+   MONGO_INITIDB_ROOT_PASSWORD:querty
+  volumes:
+  -host_dir:cont_dir
+  .
+  .
+  .
+
+1. Run Docker Compose yaml file
+    docker compose -f fileName.yaml up -d
+
+    NOTE: -d creates default Docker Network
+
+2. Stop or Delete Docker Compose services
+    docker compose -f fileName.yaml down
