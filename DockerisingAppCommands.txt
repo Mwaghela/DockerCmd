@@ -1,0 +1,38 @@
+-----------------------------------------------------------------------
+# DOCKERIZING APPLICATION
+-----------------------------------------------------------------------
+- Converting current application to docker container
+- Can be achieved by Dockerfile (FileName: Dockerfile without extension)
+
+-----------------------------------------------------------------------
+# DOCKERFILE INSTRUCTION
+-----------------------------------------------------------------------
+FROM    => From BASE_IMAGE
+WORKDIR => Working directory or path in the Docker Image where files will be copied and commands will be executed
+COPY    => Copy file from Host directory to Container directory
+RUN     => Multiple run commands
+CMD     => Can only have one run command to execute actual application
+EXPOSE  => Expose port
+ENV     => Set environment variable
+
+-----------------------------------------------------------------------
+# DOCKERFILE EXAMPLE
+-----------------------------------------------------------------------'
+FileName: Dockerfile (without extension)
+FROM node
+ENV MONGO_DB_USERNAME=admin \
+    MONGO_DB_PWD=querty
+RUN mkdir -p testapp
+COPY . /testapp
+CMD ["node","/test/server.js"]
+
+-----------------------------------------------------------------------
+# DOCKERFILE
+-----------------------------------------------------------------------
+1. Build Docker Image from Dockerfile
+    docker build -t testapp:1.0 .
+
+    NOTE: 
+    - "." represent Dockerfile present in current directory
+    - -t tag your Docker Image name, like image_name or image_name:1.0
+    - Once Docker Image is created from Dockerfile, you can use same commands provided in DockerCommands file
